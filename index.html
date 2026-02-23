@@ -29,16 +29,16 @@
       </h1>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-8 rounded-xl">
         <div class="card bg-white rounded-2xl p-6 flex flex-col items-start justify-center">
-          <p id="total" class="text-[#323B49] font-semibold">Total</p>
-          <p class="text-[#002C5C] font-bold">8</p>
+          <p class="text-[#323B49] font-semibold">Total</p>
+          <p id="total" class="text-[#002C5C] font-bold">8</p>
         </div>
         <div class="card bg-white rounded-2xl p-6 flex flex-col items-start justify-center">
-          <p id="interviewCount" class="text-[#323B49] font-semibold">Interview</p>
-          <p class="text-[#10B981] font-bold">0</p>
+          <p class="text-[#323B49] font-semibold">Interview</p>
+          <p id="interviewCount" class="text-[#10B981] font-bold">0</p>
         </div>
         <div class="card bg-white rounded-2xl p-6 flex flex-col items-start justify-center">
-          <p id="rejectionCount" class="text-[#323B49] font-semibold">Rejected</p>
-          <p class="text-[#EF4444] font-bold">0</p>
+          <p class="text-[#323B49] font-semibold">Rejected</p>
+          <p id="rejectionCount" class="text-[#EF4444] font-bold">0</p>
         </div>
       </div>
     </header>
@@ -50,23 +50,37 @@
           <p class="text-[16px] font-mono text-[#64748B]">8 jobs</p>
         </div>
         <div class="pt-6 gap-2 mb-6">
-          <button id="all-filter-btn" class="bg-[#3B82F6] text-white px-5 py-1 rounded">All</button>
-          <button id="interview-filter-btn" class="bg-white px-5 py-1 rounded text-[#64748B]">
+          <button
+            onclick="toggleStyle('all-filter-btn')"
+            id="all-filter-btn"
+            class="bg-[#3B82F6] text-white px-5 py-1 rounded"
+          >
+            All
+          </button>
+          <button
+            onclick="toggleStyle('interview-filter-btn')"
+            id="interview-filter-btn"
+            class="bg-white px-5 py-1 rounded text-[#64748B]"
+          >
             Interview
           </button>
-          <button id="rejected-filter-btn" class="bg-white px-5 py-1 rounded text-[#64748B]">
+          <button
+            onclick="toggleStyle('rejected-filter-btn')"
+            id="rejected-filter-btn"
+            class="bg-white px-5 py-1 rounded text-[#64748B]"
+          >
             Rejected
           </button>
         </div>
       </div>
-      <section id="allCard" class="space-y-6">
+      <section id="allCards" class="space-y-6">
         <!-- card-1 -->
         <div class="card p-6 bg-white rounded-2xl items-start flex justify-between">
           <!-- main part-1 -->
           <div class="space-y-6">
             <!-- part-1 -->
             <div class="flex flex-col gap-1">
-              <p class="companey-name text-[#002C5C] text-lg font-medium">Mobile First Corp</p>
+              <p class="companyName text-[#002C5C] text-lg font-medium">Mobile First Corp</p>
               <p class="position text-[#64748B] text-xs font-normal">React Native Developer</p>
             </div>
             <!-- part-2 -->
@@ -167,7 +181,9 @@
             <!-- part-1 -->
             <div class="flex flex-col gap-1">
               <p class="companey-name text-[#002C5C] text-lg font-medium">DataViz Solutions</p>
-              <p class="position text-[#64748B] text-xs font-normal">Data Visualization Specialist</p>
+              <p class="position text-[#64748B] text-xs font-normal">
+                Data Visualization Specialist
+              </p>
             </div>
             <!-- part-2 -->
             <div>
@@ -183,7 +199,9 @@
             <div>
               <p class="status">Not Applied</p>
               <p class="description">
-                Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking.</p>
+                Transform complex data into compelling visualizations. Required skills: D3.js,
+                React, and strong analytical thinking.
+              </p>
             </div>
             <div>
               <div class="flex gap-2">
@@ -228,7 +246,9 @@
             <!-- part-3 -->
             <div>
               <p class="status">Not Applied</p>
-              <p class="description">Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps practices and cloud infrastructure.
+              <p class="description">
+                Design and maintain scalable backend systems using Python and AWS. Work with modern
+                DevOps practices and cloud infrastructure.
               </p>
             </div>
             <div>
@@ -274,7 +294,9 @@
             <!-- part-3 -->
             <div>
               <p class="status">Not Applied</p>
-              <p class="description">Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required.
+              <p class="description">
+                Create beautiful and functional user interfaces for our suite of products. Strong
+                design skills and frontend development expertise required.
               </p>
             </div>
             <div>
@@ -320,7 +342,10 @@
             <!-- part-3 -->
             <div>
               <p class="status">Not Applied</p>
-              <p class="description">Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development opportunities.
+              <p class="description">
+                Build enterprise applications with JavaScript and modern frameworks. We offer
+                competitive compensation, health insurance, and professional development
+                opportunities.
               </p>
             </div>
             <div>
@@ -366,7 +391,9 @@
             <!-- part-3 -->
             <div>
               <p class="status">Not Applied</p>
-              <p class="description">Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included.
+              <p class="description">
+                Join our fast-growing startup and work on our core platform. Experience with Node.js
+                and React required. Great benefits and equity package included.
               </p>
             </div>
             <div>
@@ -400,7 +427,6 @@
               <p class="position text-[#64748B] text-xs font-normal">Senior Frontend Developer</p>
             </div>
             <!-- part-2 -->
-            <div>
               <div class="location flex items-center gap-2 text-sm text-slate-500 font-medium">
                 <span>San Francisco, CA</span>
                 <span class="text-slate-300">•</span>
@@ -408,13 +434,16 @@
                 <span class="text-slate-300">•</span>
                 <span class="salary"> $130,000 - $175,000</span>
               </div>
-            </div>
+            
             <!-- part-3 -->
-            <div>
+            
               <p class="status">Not Applied</p>
-              <p class="description">We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.
+              <p class="description">
+                We are looking for an experienced Frontend Developer to build scalable web
+                applications using React and TypeScript. You will work with a talented team on
+                cutting-edge projects.
               </p>
-            </div>
+            
             <div>
               <div class="flex gap-2">
                 <button
@@ -437,5 +466,7 @@
         </div>
       </section>
     </main>
+
+    <script src="script.js"></script>
   </body>
 </html>
