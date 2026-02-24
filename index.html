@@ -47,7 +47,7 @@
       <div>
         <div class="flex justify-between items-center">
           <p class="text-xl font-semibold text-[#002C5C]">Available Jobs</p>
-          <p class="text-[16px] font-mono text-[#64748B]">8 jobs</p>
+          <p id="availableCount" class="text-[16px] font-mono text-[#64748B]">8 jobs</p>
         </div>
         <div class="pt-6 gap-2 mb-6">
           <button
@@ -73,6 +73,11 @@
           </button>
         </div>
       </div>
+     <!-- filtered card -->
+      <section id="filter-section" class="hidden">
+
+      </section>
+
       <section id="allCards" class="space-y-6">
         <!-- card-1 -->
         <div class="card p-6 bg-white rounded-2xl items-start flex justify-between">
@@ -132,7 +137,7 @@
           <div class="space-y-6">
             <!-- part-1 -->
             <div class="flex flex-col gap-1">
-              <p class="companey-name text-[#002C5C] text-lg font-medium">WebFlow Agency</p>
+              <p class="companyName text-[#002C5C] text-lg font-medium">WebFlow Agency</p>
               <p class="position text-[#64748B] text-xs font-normal">Web Designer & Developer</p>
             </div>
             <!-- part-2 -->
@@ -180,7 +185,7 @@
           <div class="space-y-6">
             <!-- part-1 -->
             <div class="flex flex-col gap-1">
-              <p class="companey-name text-[#002C5C] text-lg font-medium">DataViz Solutions</p>
+              <p class="companyName text-[#002C5C] text-lg font-medium">DataViz Solutions</p>
               <p class="position text-[#64748B] text-xs font-normal">
                 Data Visualization Specialist
               </p>
@@ -230,7 +235,7 @@
           <div class="space-y-6">
             <!-- part-1 -->
             <div class="flex flex-col gap-1">
-              <p class="companey-name text-[#002C5C] text-lg font-medium">CloudFirst Inc</p>
+              <p class="companyName text-[#002C5C] text-lg font-medium">CloudFirst Inc</p>
               <p class="position text-[#64748B] text-xs font-normal">Backend Developer</p>
             </div>
             <!-- part-2 -->
@@ -278,7 +283,7 @@
           <div class="space-y-6">
             <!-- part-1 -->
             <div class="flex flex-col gap-1">
-              <p class="companey-name text-[#002C5C] text-lg font-medium">Innovation Labs</p>
+              <p class="companyName text-[#002C5C] text-lg font-medium">Innovation Labs</p>
               <p class="position text-[#64748B] text-xs font-normal">UI/UX Engineer</p>
             </div>
             <!-- part-2 -->
@@ -326,7 +331,7 @@
           <div class="space-y-6">
             <!-- part-1 -->
             <div class="flex flex-col gap-1">
-              <p class="companey-name text-[#002C5C] text-lg font-medium">MegaCorp Solutions</p>
+              <p class="companyName text-[#002C5C] text-lg font-medium">MegaCorp Solutions</p>
               <p class="position text-[#64748B] text-xs font-normal">JavaScript Developer</p>
             </div>
             <!-- part-2 -->
@@ -375,7 +380,7 @@
           <div class="space-y-6">
             <!-- part-1 -->
             <div class="flex flex-col gap-1">
-              <p class="companey-name text-[#002C5C] text-lg font-medium">StartupXYZ</p>
+              <p class="companyName text-[#002C5C] text-lg font-medium">StartupXYZ</p>
               <p class="position text-[#64748B] text-xs font-normal">Full Stack Engineer</p>
             </div>
             <!-- part-2 -->
@@ -423,7 +428,7 @@
           <div class="space-y-6">
             <!-- part-1 -->
             <div class="flex flex-col gap-1">
-              <p class="companey-name text-[#002C5C] text-lg font-medium">TechCorp Industries</p>
+              <p class="companyName text-[#002C5C] text-lg font-medium">TechCorp Industries</p>
               <p class="position text-[#64748B] text-xs font-normal">Senior Frontend Developer</p>
             </div>
             <!-- part-2 -->
