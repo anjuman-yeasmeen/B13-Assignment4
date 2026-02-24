@@ -2,10 +2,10 @@ let interviewList = [];
 let rejectionList = [];
 let currentStatus = 'all-filter-btn';
 
-
+// Selectors
 const total = document.getElementById("total");
 const interviewCount = document.getElementById("interviewCount");
-const rejectionCountDashboard = document.getElementById("rejectionCount");
+const rejectionCountDashboard = document.getElementById("rejectionCount"); 
 const availableCountText = document.getElementById("availableCount"); 
 
 const allCardSection = document.getElementById("allCards");
@@ -16,20 +16,25 @@ const allFilterBtn = document.getElementById("all-filter-btn");
 const interviewFilterBtn = document.getElementById("interview-filter-btn");
 const rejectedFilterBtn = document.getElementById("rejected-filter-btn");
 
+// 1. Updated Function to calculate Dashboard and Available Jobs counts correctly
 function calculateCount() {
+    // Counts cards currently visible in the "All" section
     const allCardsCount = allCardSection.querySelectorAll('.card').length;
+    
+    // Total jobs calculation: Remaining in main + Saved in Interview + Saved in Rejected
     const totalJobs = allCardsCount + interviewList.length + rejectionList.length;
     
-   
+    // Update Dashboard Stats
     total.innerText = totalJobs;
     interviewCount.innerText = interviewList.length;
     rejectionCountDashboard.innerText = rejectionList.length;
 
-   
+    // Update the "Available Jobs" text area
     if (availableCountText) {
         if (currentStatus === 'all-filter-btn') {
             availableCountText.innerText = `${allCardsCount} jobs`;
-          
+            
+            // Show empty state if all cards are removed from the main list
             if (allCardsCount === 0) {
                 allCardSection.innerHTML = emptyMessage("Available Jobs");
             }
@@ -41,7 +46,7 @@ function calculateCount() {
     }
 }
 
-
+// 2. Logic for switching between filter buttons
 function toggleStyle(id) {
     [allFilterBtn, interviewFilterBtn, rejectedFilterBtn].forEach(btn => {
         btn.classList.remove("bg-[#3B82F6]", "text-white");
@@ -65,16 +70,17 @@ function toggleStyle(id) {
     calculateCount(); 
 }
 
-
+// 3. Event Delegation for handling clicks inside job cards
 mainContainer.addEventListener("click", function (event) {
     const target = event.target;
     const parenNode = target.closest('.card');
     if (!parenNode) return;
 
-   
-    const companyName = parenNode.querySelector(".companyName").innerText;
+    const companyNameElement = parenNode.querySelector(".companyName");
+    if (!companyNameElement) return;
+    const companyName = companyNameElement.innerText;
 
-   
+    // Add to Interview
     if (target.classList.contains("interview-btn")) {
         const cardInfo = getCardData(parenNode, "interview");
         if (!interviewList.find(item => item.companyName === companyName)) {
@@ -82,14 +88,13 @@ mainContainer.addEventListener("click", function (event) {
         }
         rejectionList = rejectionList.filter(item => item.companyName !== companyName);
         
-        
         if (parenNode.parentNode.id === "allCards") {
             parenNode.remove();
         }
         updateUI();
     }
 
- 
+    // Add to Rejected
     else if (target.classList.contains("rejected-btn")) {
         const cardInfo = getCardData(parenNode, "rejected");
         if (!rejectionList.find(item => item.companyName === companyName)) {
@@ -103,7 +108,7 @@ mainContainer.addEventListener("click", function (event) {
         updateUI();
     }
 
- 
+    // Delete Card (Bonus Challenge)
     else if (target.classList.contains("delete")) {
         interviewList = interviewList.filter(item => item.companyName !== companyName);
         rejectionList = rejectionList.filter(item => item.companyName !== companyName);
@@ -118,6 +123,7 @@ function updateUI() {
     if (currentStatus === "rejected-filter-btn") renderRejected();
 }
 
+// Function to collect data from card for lists
 function getCardData(node, status) {
     const locNode = node.querySelector(".location");
     const spans = locNode.querySelectorAll("span:not(.text-slate-300)");
@@ -125,9 +131,9 @@ function getCardData(node, status) {
     return {
         companyName: node.querySelector(".companyName").innerText,
         position: node.querySelector(".position").innerText,
-        location: spans[0]?.innerText || "",
-        type: spans[1]?.innerText || "",
-        salary: spans[2]?.innerText || "",
+        location: spans[0]?.innerText || "N/A",
+        type: spans[1]?.innerText || "N/A",
+        salary: spans[2]?.innerText || "N/A",
         status: status,
         description: node.querySelector(".description").innerText,
     };
@@ -175,8 +181,10 @@ function emptyMessage(type) {
     <div class="card p-10 bg-white rounded-2xl shadow-sm flex flex-col items-center 
     justify-center text-center w-full mt-4">
         <img src="./image/jobs.png" alt="No Jobs" class="w-20 h-20 mb-4" />
-        <h2 class="text-2xl font-bold text-[#002C5C]">Check back soon for new job opportunities</h2>
+        <h2 class="text-2xl font-bold text-[#002C5C]">No ${type} Available</h2>
+        <p class="text-slate-500">Check back later for new opportunities</p>
     </div>`;
 }
 
+// Initial Call
 calculateCount();
